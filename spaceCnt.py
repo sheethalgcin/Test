@@ -13,4 +13,3 @@ for i in range (len(str4)):
             print("the entered string has more than one space in a row")
         else:
             print("No space")
-            print('hello')
