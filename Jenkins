@@ -1,0 +1,11 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Stage 1') {
+            steps {
+                echo 'Hello world!' 
+                slackSend(teamDomain: 'babaji', tokenCredentialId: 'slack-token-bot', channel:'#general',color:'good',botUser:true, message: 'Test Message Playback team' )
+            }
+        }
+    }
+}
