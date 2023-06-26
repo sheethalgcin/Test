@@ -1,9 +1,9 @@
 pipeline {
-    agent any
     stages {
         stage('Stage 1') {
             agent {
                 label 'docker'
+                reuseNode true
               }
             steps {
                 echo 'Hello world!' 
