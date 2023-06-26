@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent docker
     stages {
         stage('Stage 1') {
             agent {
-                label 'agent2'
+                label 'docker'
               }
             steps {
                 echo 'Hello world!' 
