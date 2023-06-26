@@ -4,6 +4,7 @@ pipeline {
         stage('Stage 1') {
             steps {
                 echo 'Hello world!' 
+                sh 'docker -version'
                 slackSend(teamDomain: 'babaji', tokenCredentialId: 'slack-token-bot', channel:'#general',color:'good',botUser:true, message: 'Test Message Playback team' )
             }
         }
