@@ -1,7 +1,8 @@
 pipeline {
 
   stages {
-    agent {
+    stage('Robot tests') {
+      agent {
         dockerfile {
           filename 'Docker'
           label 'docker'
@@ -9,9 +10,6 @@ pipeline {
           additionalBuildArgs "--no-cache"
         }
       }
-   
-
-    stage('Robot tests') {
       steps {
         sh "docker run robot"
       }
