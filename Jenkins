@@ -5,6 +5,14 @@ pipeline {
   }
 
   stages {
+    agent {
+        dockerfile {
+          filename 'Docker'
+          label 'docker'
+          args "-v $WORKSPACE:/workspace"
+          additionalBuildArgs "--no-cache"
+        }
+      }
     stage('Checkout') {
       steps {
         checkout scm
