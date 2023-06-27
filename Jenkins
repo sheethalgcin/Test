@@ -1,11 +1,18 @@
+
 pipeline {
-    agent any
-    stages {
-    stage(' Test'){
-        agent {
+  options {
+      timeout(time: 1, unit: 'HOURS')
+  }
+  agent {
+    label 'docker'
+  }
+  stages {
+    stage("Unit tests & linting") {
+      agent {
         dockerfile {
           filename 'Dockerfile'
-          label 'docker'
+          label 'build150'
+         
         }
       }
       steps {
@@ -13,5 +20,5 @@ pipeline {
         sh 'robocop'
       }
     }
-    }
+  }
 }
