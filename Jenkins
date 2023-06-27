@@ -11,7 +11,6 @@ pipeline {
         dockerfile {
           filename 'Docker'
           label 'docker'
-         sh 'python --version'
         }
       }
       
