@@ -1,13 +1,22 @@
 pipeline {
   
-  agent { dockerfile true }
-  stages {
-    stage("Test") {
-    steps {
-        echo 'Hello world!'
-        sh 'docker --version'
-        slackSend(teamDomain: 'babaji', tokenCredentialId: 'slack-token-bot', channel:'#general',color:'good',botUser:true, message: 'Test Message Playback team' )
-          }
-    }
+  agent {
+    label 'docker'
   }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        checkout scm
+      }
+    }
+
+    stage('Robot tests') {
+      steps {
+        sh "docker-compose run robot"
+      }
+    }
+
+  }
+
 }
