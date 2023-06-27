@@ -10,7 +10,7 @@ pipeline {
       agent {
         dockerfile {
           filename 'Dockerfile'
-          label 'build150'
+          label 'docker'
          
         }
       }
