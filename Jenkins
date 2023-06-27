@@ -13,12 +13,11 @@ pipeline {
           label 'docker'
         }
       }
-      steps {
-                echo 'Hello world!'
-                sh '/Applications/Docker.app/Contents/Resources/bin/docker --version'
-               
-                slackSend(teamDomain: 'babaji', tokenCredentialId: 'slack-token-bot', channel:'#general',color:'good',botUser:true, message: 'Test Message Playback team' )
-            }
+    steps {
+        echo 'Hello world!'
+        sh '/Applications/Docker.app/Contents/Resources/bin/docker --version'
+        slackSend(teamDomain: 'babaji', tokenCredentialId: 'slack-token-bot', channel:'#general',color:'good',botUser:true, message: 'Test Message Playback team' )
+          }
     }
   }
 }
