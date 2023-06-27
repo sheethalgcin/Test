@@ -11,8 +11,8 @@ pipeline {
         dockerfile {
           filename 'Dockerfile'
           label 'docker'
-          sh "docker --version"
-          sh "python --version"
+          sh 'docker --version'
+          sh 'python --version'
         }
       }
       steps {
