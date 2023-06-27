@@ -11,13 +11,10 @@ pipeline {
         dockerfile {
           filename 'Docker'
           label 'docker'
-     
+         sh 'python funExcercises.py'
         }
       }
-      steps {
-        sh "pytest lib"
-        sh 'robocop'
-      }
+      
     }
   }
 }
