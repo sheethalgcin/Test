@@ -6,7 +6,7 @@ pipeline {
       agent {
           label 'docker'
         }
-      }
+      
     steps {
         echo 'Hello world!'
         sh '/Applications/Docker.app/Contents/Resources/bin/docker --version'
@@ -14,3 +14,4 @@ pipeline {
           }
     }
   }
+}
