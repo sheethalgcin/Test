@@ -1,8 +1,4 @@
 pipeline {
-    agent 
-    {
-        docker
-    }
     stages {
         stage('Stage 1') {
             agent {
