@@ -1,8 +1,4 @@
 pipeline {
-  
-  agent {
-    label 'docker'
-  }
 
   stages {
     agent {
@@ -13,11 +9,7 @@ pipeline {
           additionalBuildArgs "--no-cache"
         }
       }
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
-    }
+   
 
     stage('Robot tests') {
       steps {
