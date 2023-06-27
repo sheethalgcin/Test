@@ -3,9 +3,7 @@ pipeline {
   agent { dockerfile true }
   stages {
     stage("Unit tests & linting") {
-      agent {
-          label 'docker'
-        }
+
       
     steps {
         echo 'Hello world!'
