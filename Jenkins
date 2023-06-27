@@ -11,7 +11,7 @@ pipeline {
         dockerfile {
           filename 'Docker'
           label 'docker'
-         sh 'python funExcercises.py'
+         sh 'python --version'
         }
       }
       
