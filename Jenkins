@@ -6,11 +6,13 @@ agent any
         dockerfile {
           filename 'Docker'
           label 'docker'
+
           args "-v $WORKSPACE:/workspace"
           additionalBuildArgs "--no-cache"
         }
       }
       steps {
+        sh 'docker --version'
         sh "docker run robot"
       }
     }
