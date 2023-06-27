@@ -7,7 +7,7 @@ pipeline {
               }
             steps {
                 echo 'Hello world!' 
-                sh '/usr/bin/docker --version'
+                sh '/Applications/Docker.app/Contents/Resources/bin/docker --version'
                 
                 slackSend(teamDomain: 'babaji', tokenCredentialId: 'slack-token-bot', channel:'#general',color:'good',botUser:true, message: 'Test Message Playback team' )
             }
