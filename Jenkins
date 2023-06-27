@@ -9,7 +9,7 @@ pipeline {
     stage("Unit tests & linting") {
       agent {
         dockerfile {
-          filename 'Dockerfile'
+          filename 'Docker'
           label 'docker'
           sh 'docker --version'
           sh 'python --version'
