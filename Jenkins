@@ -11,7 +11,7 @@ agent any
       steps {
         sh 'echo $PATH'
         sh "/Applications/Docker.app/Contents/Resources/bin/docker --version"
-        sh "docker run robot"
+        sh "/Applications/Docker.app/Contents/Resources/bin/docker run robot"
       }
     }
 
