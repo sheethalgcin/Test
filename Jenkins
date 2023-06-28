@@ -6,8 +6,6 @@ agent any
         dockerfile {
           filename 'Docker'
           label 'docker'
-
-          
         }
       }
       steps {
