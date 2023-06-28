@@ -3,10 +3,10 @@ agent any
   stages {
     stage('Robot tests') {
       agent {
-        dockerfile {
-          filename 'Docker'
+       // dockerfile {
+        //  filename 'Docker'
           label 'docker'
-        }
+        //}
       }
       steps {
         sh 'docker --version'
