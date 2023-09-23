@@ -19,9 +19,9 @@ jobs:
       with:
         python-version: '3.11'  # Choose your desired Python version
     - name: Set up Docker
-        uses: docker/setup-buildx-action@v2
+      uses: docker/setup-buildx-action@v2
     - name: Build and run Robot Framework Docker container
-        run: |
+      run: |
           docker build -t dockerImage .
           docker run dockerImage
     
