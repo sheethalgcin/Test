@@ -16,13 +16,6 @@ jobs:
       
         - name: Set up Docker
           uses: docker/setup-buildx-action@v2
-      
-        - name: Build Docker image
-          run: |
-              docker build -t my-robot-tests:latest .
-            
-        - name: Build and run Robot Framework Docker container
-          run: |
-                docker run dockerImage
-    
-
+          
+        - name: Set up Docker
+          uses: docker/build-push-action@v2
