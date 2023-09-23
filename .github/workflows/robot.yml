@@ -14,6 +14,11 @@ jobs:
         - name: Checkout code
           uses: actions/checkout@v3
       
+        - name: Update Docker Buildx
+          run: |
+            docker buildx version --builder default
+            docker buildx version --builder my-builder-name  # If you have a specific builder
+
         - name: Set up Docker
           uses: docker/setup-buildx-action@v2
           
