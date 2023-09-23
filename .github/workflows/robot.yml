@@ -17,16 +17,7 @@ jobs:
         - name: Update Docker Buildx
           run: |
             docker buildx version --builder default
-            docker buildx version --builder my-builder-name  # If you have a specific builder
-
         - name: Set up Docker
           uses: docker/setup-buildx-action@v2
-          
-        - name: Set up Docker
-          uses: docker/build-push-action@v2
-
-        - name: Build and run Robot Framework Docker container
-          run: |
-            docker build -t dockerImage .
-            docker run dockerImage
+      
     
