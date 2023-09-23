@@ -1,0 +1,16 @@
+# Use an official Python runtime as a parent image
+FROM python:3.x
+
+# Set the working directory in the container
+WORKDIR /app
+
+COPY requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+# Install Robot Framework and any Python dependencies you need
+RUN pip install robotframework
+
+# Copy your test suite files into the container
+COPY . /app
+
+# Define the entry point to run Robot Framework
