@@ -9,7 +9,7 @@ try:
 
  #   import sheetal
     q = x/y
-    print(q)
+   
     print(L[1])
 
 
