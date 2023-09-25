@@ -16,8 +16,11 @@ jobs:
           
         - name: Docker Image
           uses: docker/setup-buildx-action@v3
+
+        - name: Docker Build
+          run: |
+             docker build -t  my-python-image .
           
-    
         - name: Run a shell command
           run: |
               echo "Hello from the self-hosted runner!"
