@@ -21,6 +21,5 @@ jobs:
         - name: Run a shell command
           run: |
               echo "Hello from the self-hosted runner!"
-          # Add more commands as needed
       
     
