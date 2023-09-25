@@ -14,4 +14,4 @@ RUN pip install robotframework
 COPY . /app
 
 # Define the entry point to run Robot Framework
-CMD ["print("hello")"]
+CMD python -version
