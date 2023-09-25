@@ -10,4 +10,4 @@ k = d.keys()
 print(k)
 v = d.values()
 print(v)
-i = d.items()
+
