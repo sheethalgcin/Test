@@ -7,8 +7,6 @@ WORKDIR /app
 COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
-# Install Robot Framework and any Python dependencies you need
-RUN pip install robotframework
 
 # Copy your test suite files into the container
 COPY . /app
