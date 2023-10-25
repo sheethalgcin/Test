@@ -13,3 +13,4 @@ cx-Oracle
 browsermob-proxy
 Appium-Python-Client==0.31
 view raw
+CMD["/bin/sh","-c", "robot -d output -o output.xml test.robot"]
