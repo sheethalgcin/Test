@@ -66,11 +66,20 @@ jobs:
   #  runs-on: ubuntu-latest
   #  name: Generate Test Reports
    # steps:
-    - name: XUnit Viewer
+    - name: Generate Test Reports
+      env:
+        RESULTS_PATH: .
+      
+    - name: Generate Test Reports
       id: xunit-viewer
-      uses: AutoModality/action-xunit-viewer@v1  
-    - name: Attach the report
+      uses: AutoModality/action-xunit-viewer@v1
+      with:
+        results: ${{ env.RESULTS_PATH }}
+        
+    - name: The generated report
+      run: echo "The report is ${{ steps.xunit-viewer.outputs.report-file }}"   
+    - name: The attached report
       uses: actions/upload-artifact@v1
       with:
-        name: ${{ steps.xunit-viewer.outputs.report-name }}
-        path: ${{ steps.xunit-viewer.outputs.report-dir }}
+        name: alternate-results-path-reports
+        path: ${{ env.RESULTS_PATH }}
