@@ -54,13 +54,13 @@ jobs:
     - name: Upload Dist
       uses: actions/upload-artifact@v3
       with:
+        name: robot-reports
         path: results
-    - name: Get the current path
-      run: |
-           ls  -l results
+
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
+        name: robot-reports
         path: results
 
     - name: Get the current path
