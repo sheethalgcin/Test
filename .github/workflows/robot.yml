@@ -59,8 +59,10 @@ jobs:
           docker run -d --name sheetal  --mount source=myvol2,target=/app ${{ steps.meta.outputs.tags }}
           ls -l
           pwd
+          ls -l  ./app
+          ls -l  ./myvol2
           docker service ps sheetal
-          docker service rm sheetal
+
     - name: Download reports
       uses: actions/download-artifact@v1
     - name: Get Repository Owner & Name
