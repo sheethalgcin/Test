@@ -55,7 +55,7 @@ jobs:
     - name: 'Echo download path'
       run: |
         echo ${{steps.download.outputs.download-path}}
-        ls -l ${{steps.download.outputs.download-path}}/reports/
+        ls -l ${{steps.download.outputs.download-path}}
       
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v2.3
