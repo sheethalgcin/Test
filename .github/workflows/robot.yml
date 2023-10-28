@@ -52,6 +52,19 @@ jobs:
         load: true
         tags: ${{ steps.meta.outputs.tags }}
 
+    
+    - name: Run a shell command
+      run: |
+          echo "Hello from the self-hosted runner!"
+          #docker run -d - ${{ steps.meta.outputs.tags }}
+          #docker run -v ${PWD}/output.xml:/app/output.xml ${{ steps.meta.outputs.tags }}
+            
+          docker run   ${{ steps.meta.outputs.tags }}
+          continue-on-error: true
+          #docker container stop sheetal
+          #docker container rm sheetal
+          #docker volume rm myvol2
+          
     - uses: shrink/actions-docker-extract@v3
       id: extract
       with:
@@ -68,17 +81,6 @@ jobs:
           ${{ steps.extract.outputs.destination }}
           pwd
            
-    - name: Run a shell command
-      run: |
-          echo "Hello from the self-hosted runner!"
-          #docker run -d - ${{ steps.meta.outputs.tags }}
-          #docker run -v ${PWD}/output.xml:/app/output.xml ${{ steps.meta.outputs.tags }}
-            
-          docker run   ${{ steps.meta.outputs.tags }}
-          continue-on-error: true
-          #docker container stop sheetal
-          #docker container rm sheetal
-          #docker volume rm myvol2
     - name: Download reports
       uses: actions/download-artifact@v1
     - name: Get Repository Owner & Name
