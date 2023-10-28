@@ -63,13 +63,12 @@ jobs:
       with:
         path: ${{ steps.extract.outputs.destination }}
         name: dist
-    run: |
-        ls -l 
-        ls -l dist
-        ${{ steps.extract.outputs.destination }}
-        pwd
-      
-     
+        run: |
+          ls -l 
+          ls -l dist
+          ${{ steps.extract.outputs.destination }}
+          pwd
+           
     - name: Run a shell command
       run: |
           echo "Hello from the self-hosted runner!"
