@@ -58,8 +58,8 @@ jobs:
     - name: List files in /app/
       run: |
         docker run ${{ steps.meta.outputs.tags }} 
-        pwd
-        ls -l  /app      
+      
+        ls -l  .    
     - uses: shrink/actions-docker-extract@v3
       id: extract
       with:
