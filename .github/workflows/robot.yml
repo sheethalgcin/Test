@@ -60,7 +60,7 @@ jobs:
           #docker run -v ${PWD}/output.xml:/app/output.xml ${{ steps.meta.outputs.tags }}
             
           docker run   ${{ steps.meta.outputs.tags }}
-          continue-on-error: true
+      continue-on-error: true
           #docker container stop sheetal
           #docker container rm sheetal
           #docker volume rm myvol2
