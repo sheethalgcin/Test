@@ -72,7 +72,7 @@ jobs:
       - name: Step 2
         run: |
           echo "This is the second step"
-          sleep 40  # Sleep for 10 seconds
+          sleep 60  # Sleep for 10 seconds
           
       - name: Set up Node.js
         uses: actions/setup-node@v2
