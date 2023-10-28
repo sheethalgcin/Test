@@ -68,6 +68,6 @@ jobs:
       with:
           paths: reports/res.xml
           output: test-summary.md
-          if: always()
+      if: always()
 
   
