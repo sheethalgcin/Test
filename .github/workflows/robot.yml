@@ -51,10 +51,7 @@ jobs:
         name: reports
         path: ./reports       
       
-    - name: Send report to commit
-      uses: joonvena/robotframework-reporter-action@v2.3
-      with:
-        gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+ 
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v2
