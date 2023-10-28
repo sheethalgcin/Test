@@ -1,8 +1,9 @@
 version: '3'
 services:
   robot:
-    image: robotframework/rfbrowser
+    build:
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - ./tests:/robot/tests
-      - ./results:/robot/reports
-    command: robot /robot/tests
+      - ./results:/robot-tests/results
+    command: robot /robot-tests/tests
