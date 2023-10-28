@@ -63,44 +63,11 @@ jobs:
         files: |
           reports/res.xml
 
-  test:
-    runs-on: ubuntu-latest
-    name: Generate Test Reports
-    env:
-     RESULTS_PATH: reports/
-    steps:
-      - name: Step 2
-        run: |
-          echo "This is the second step"
-          sleep 60  # Sleep for 10 seconds
-          
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+    - name: Test Summary
+      uses: test-summary/action@v2
+      with:
+          paths: reports/*.xml
+          output: test-summary.md
+          if: always()
 
-      - name: Install and Update npm Packages
-        run: |
-          npm update    
-          npm install -g xunit-viewer
-          
-      - name: Run xunit-viewer
-        run: xunit-viewer -r reports/res.xml -o reports
-        
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: html-report
-          path: reports
-
-      - name: Test Summary
-        uses: test-summary/action@v2
-        with:
-            paths: "reports/res.xml"
-            output: test-summary.md
-            if: always()
-
-
-    
-
-
+  
