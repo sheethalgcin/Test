@@ -63,7 +63,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: robot-reports
-        path: results
+        path: results/output.xml
 
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v0.1
