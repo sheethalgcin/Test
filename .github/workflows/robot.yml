@@ -50,11 +50,17 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
 
     
-    - name: Run a shell command
+ #   - name: Run a shell command
+  #    run: |
+  #        docker run   ${{ steps.meta.outputs.tags }}
+  #    continue-on-error: true
+
+    - name: List files in /app/
       run: |
-          docker run   ${{ steps.meta.outputs.tags }}
-      continue-on-error: true
-          
+        docker run ${{ steps.meta.outputs.tags }} ls -l /app/
+        chmod  a+x  /app/ 
+
+      
     - uses: shrink/actions-docker-extract@v3
       id: extract
       with:
