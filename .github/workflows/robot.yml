@@ -57,13 +57,12 @@ jobs:
           echo "Hello from the self-hosted runner!"
            mkdir   myvol2
           docker run -d --name sheetal  --mount source=myvol2,target=/app ${{ steps.meta.outputs.tags }}
-          ls -l
           pwd
-          ls -l  ./app
+          ls -l  /app
           ls -l  ./myvol2
           docker service ps sheetal
           docker container stop sheetal
-           docker container rm sheetal
+          docker container rm sheetal
           docker volume rm myvol2
     - name: Download reports
       uses: actions/download-artifact@v1
