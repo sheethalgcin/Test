@@ -35,10 +35,7 @@ jobs:
     - name: Set up Docker Compose
       run: docker-compose -f docker_compose.yaml up -d
 
-    - name: Wait for Services
-      run: sleep 10  # Adjust as needed
-
-    - name: List files in /app/
+    - name: Run the docker
       run: |
         docker run ${{ steps.meta.outputs.tags }}
       
@@ -57,17 +54,17 @@ jobs:
         name: robot-reports
         path: results
 
+    - name: Change the permissions
+      run: |
+          chmod a+x robot-reports
+      continue-on-error: true
+
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
         name: robot-reports
         path: results
 
-    - name: Get the current path
-      run: |
-           ls  -l results
-          
-   
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v0.1
       env:
