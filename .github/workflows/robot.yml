@@ -69,5 +69,8 @@ jobs:
           paths: reports/res.xml
           output: test-summary.md
       if: always()
+    - name: display the test summary
+      run: |
+        cat test-summary.md
 
   
