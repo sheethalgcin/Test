@@ -57,7 +57,8 @@ jobs:
 
     - name: List files in /app/
       run: |
-        docker run ${{ steps.meta.outputs.tags }}  chmod +x /app/output.xml
+        docker run ${{ steps.meta.outputs.tags }} 
+        pwd
         ls -l  /app      
     - uses: shrink/actions-docker-extract@v3
       id: extract
