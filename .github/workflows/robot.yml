@@ -56,7 +56,9 @@ jobs:
       run: |
           echo "Hello from the self-hosted runner!"
            mkdir   myvol2
-          docker run -d --name sheetal  --mount source=myvol2,target=/app automation
+          docker run -d --name sheetal  --mount source=myvol2,target=/app ${{ steps.meta.outputs.tags }}
+          ls -l
+          pwd
           docker service ps sheetal
           docker service rm sheetal
     - name: Download reports
