@@ -47,7 +47,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
-        file: Dockerfile
+        file: Dockerfile_local
         push: false
         load: true
         tags: ${{ steps.meta.outputs.tags }}
