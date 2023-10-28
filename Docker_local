@@ -14,7 +14,11 @@ COPY . /app
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
 CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","test.robot"]
-RUN pwd
-RUN ls -l /app
-RUN find /app -type f -exec chmod +x {} \;
+#RUN pwd
+#RUN ls -l /app
+#RUN find /app -type f -exec chmod +x {} \;
+npm update
+npm update -g xunit-viewer
+
+
 
