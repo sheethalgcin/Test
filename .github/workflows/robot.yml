@@ -74,6 +74,17 @@ jobs:
           echo "This is the second step"
           sleep 60  # Sleep for 10 seconds
           
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install and Update npm Packages
+        run: |
+          npm install -g npm
+          npm update    
+          npm install -g xunit-viewer
+          
       - name: Generate Report
         id: xunit-viewer
         uses: AutoModality/action-xunit-viewer@v1
