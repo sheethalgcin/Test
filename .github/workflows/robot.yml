@@ -6,17 +6,8 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
 
     steps:
-    - name: Slack Notification
-      uses: act10ns/slack@v1
-      with: 
-        status: starting
-        channel: '#Telemetry'
-        message: Starting Build and Deploy...
-        if: always()
         
     - name: Checkout code
       uses: actions/checkout@v3         
@@ -24,14 +15,6 @@ jobs:
       uses: actions/setup-python@v2
       with:
             python-version: '3.11'  # Choose your desired Python version
-    - name: Slack Notification
-      uses: act10ns/slack@v1
-      with: 
-        status: ${{ job.status }}
-        channel: '#Telemetry'
-        message: Build {{ env.GITHUB_REF_NAME }} branch Successfully
-        if: always()
-
     - name: Docker meta
       id: meta
       uses: docker/metadata-action@v3
@@ -48,23 +31,25 @@ jobs:
         push: false
         load: true
         tags: ${{ steps.meta.outputs.tags }}
+        
+    - name: Set up Docker Compose
+      run: docker-compose -f docker_compose.yaml up -d
 
-    
- #   - name: Run a shell command
-  #    run: |
-  #        docker run   ${{ steps.meta.outputs.tags }}
-  #    continue-on-error: true
+    - name: Wait for Services
+      run: sleep 10  # Adjust as needed
 
     - name: List files in /app/
       run: |
-        docker run ${{ steps.meta.outputs.tags }} 
+        docker run ${{ steps.meta.outputs.tags }}
+        ls  -l
+      env:
+        ROBOT_OPTIONS: -d /app/output/
       
-        ls -l  .    
     - uses: shrink/actions-docker-extract@v3
       id: extract
       with:
         image: ${{ steps.meta.outputs.tags }}
-        path: /app
+        path: /app/output
     - name: Debug - List files in the "dist" folder
       run: |
         ls -l ${{ steps.extract.outputs.destination }}
