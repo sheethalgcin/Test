@@ -62,3 +62,10 @@ jobs:
       with:
         files: |
           reports/res.xml
+          
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        files: |
+          reports/res.xml
