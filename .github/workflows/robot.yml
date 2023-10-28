@@ -43,20 +43,19 @@ jobs:
         docker run ${{ steps.meta.outputs.tags }}
         ls  -l   results
       
-    - uses: shrink/actions-docker-extract@v3
-      id: extract
-      with:
-        image: ${{ steps.meta.outputs.tags }}
-        path: ./results/output.xml
-    - name: Debug - List files in the "dist" folder
-      run: |
-        ls -l ${{ steps.extract.outputs.destination }}
+   # - uses: shrink/actions-docker-extract@v3
+   #   id: extract
+   #   with:
+    #    image: ${{ steps.meta.outputs.tags }}
+    #    path: ./results/output.xml
+   # - name: Debug - List files in the "dist" folder
+   #   run: |
+    #    ls -l ${{ steps.extract.outputs.destination }}
     
     - name: Upload Dist
       uses: actions/upload-artifact@v3
       with:
-        path: ${{ steps.extract.outputs.destination }}
-        name: dist
+        path: results
     - name: Get the current path
       run: |
            ls  -l 
