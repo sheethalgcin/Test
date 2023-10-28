@@ -42,7 +42,6 @@ jobs:
       run: |
         docker run ${{ steps.meta.outputs.tags }}
         ls  -l   results
-        chmod  +x   results
       
     - uses: shrink/actions-docker-extract@v3
       id: extract
