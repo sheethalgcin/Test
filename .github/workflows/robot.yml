@@ -6,7 +6,7 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
-
+  
     steps:
         
     - name: Checkout code
@@ -67,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Generate Test Reports
     env:
-     RESULTS_PATH: alternate-location
+     RESULTS_PATH: reports/
     steps:
       - name: Step 2
         run: |
@@ -85,4 +85,28 @@ jobs:
           npm install -g xunit-viewer
           
       - name: Run xunit-viewer
-        run: xunit-viewer -r reports/res.xml -o result.html
+        run: xunit-viewer -r reports/res.xml -o reports
+        
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: html-report
+          path: reports
+
+      - name: Generate Report
+        id: xunit-viewer
+        uses: AutoModality/action-xunit-viewer@v1
+        with:
+          results: ${{ env.RESULTS_PATH }}
+      - name: The generated report
+        run: echo "The report is ${{ steps.xunit-viewer.outputs.report-file }}"    
+      - name: Attach the report
+        uses: actions/upload-artifact@v1
+        with:
+          name: alternate-results-path-reports
+          path: ${{ env.RESULTS_PATH }}
+
+
+    
+
+
