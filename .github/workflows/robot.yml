@@ -2,7 +2,6 @@ name: Telemetry Automation
 on:
   push:
     branches: [ "main" ]
-
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -65,10 +64,6 @@ jobs:
           files: |
             reports/res.xml 
           
-      - name: Generate Report
-        uses: AutoModality/action-xunit-viewer@v1
-        with:
-          results: ${{ env.RESULTS_PATH }}
           
       - name: Test Report
         uses: dorny/test-reporter@v1
