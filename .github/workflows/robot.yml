@@ -3,7 +3,6 @@ on:
   push:
     branches: [ "main" ]
 
-
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -44,7 +43,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
-        file: ./Dockerfile
+        file: Dockerfile
         push: false
         load: true
         tags: ${{ steps.meta.outputs.tags }}
@@ -53,7 +52,7 @@ jobs:
       run: |
           echo "Hello from the self-hosted runner!"
            mkdir   myvol2
-          docker run -d --name sheetal  --mount source=myvol2,target=/app robot-test
+          docker run -d --name sheetal  --mount source=myvol2,target=/app automation
           docker service ps sheetal
           docker service rm sheetal
     - name: Download reports
