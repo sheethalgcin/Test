@@ -49,7 +49,7 @@ jobs:
       id: extract
       with:
         image: ${{ steps.meta.outputs.tags }}
-        path: /results/
+        path: results/
     - name: Debug - List files in the "dist" folder
       run: |
         ls -l ${{ steps.extract.outputs.destination }}
