@@ -79,10 +79,10 @@ jobs:
           pwd
            
     - name: Download artifact
-      id: download-artifact
-      uses: dawidd6/action-download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
-        path: reports
+        name: dist
+        path: .
         
     - name: Get the current path
       run: |
