@@ -73,21 +73,16 @@ jobs:
       with:
         path: ${{ steps.extract.outputs.destination }}
         name: dist
-        run: |
-          ls -l 
-          ${{ steps.extract.outputs.destination }}
-          pwd
            
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
         name: dist
-        path: .
-        
+        path: reports
+
     - name: Get the current path
       run: |
-           ls  -l
-           pwd
+           ls  -l reports
     - name: Get Repository Owner & Name
       run: |
         export OWNER="$(echo "${{ github.repository }}" | awk -F / '{print $1}' | sed -e "s/:refs//")"
