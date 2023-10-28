@@ -7,6 +7,8 @@ WORKDIR /app
 COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
+RUN npm update
+RUN npm update -g xunit-viewer
 
 # Copy your test suite files into the container
 COPY . /app
@@ -17,8 +19,7 @@ CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","test.
 #RUN pwd
 #RUN ls -l /app
 #RUN find /app -type f -exec chmod +x {} \;
-RUN npm update
-RUN npm update -g xunit-viewer
+
 
 
 
