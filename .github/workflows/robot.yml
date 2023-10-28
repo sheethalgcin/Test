@@ -32,6 +32,23 @@ jobs:
         channel: '#Telemetry'
         message: Build {{ env.GITHUB_REF_NAME }} branch Successfully
         if: always()
+
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: automation
+        tags: |
+          type=ref,event=branch
+
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        file: ./Dockerfile
+        push: false
+        load: true
+        tags: ${{ steps.meta.outputs.tags }}
+        
     - name: Run a shell command
       run: |
           echo "Hello from the self-hosted runner!"
