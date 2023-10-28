@@ -66,7 +66,7 @@ jobs:
       id: extract
       with:
         image: ${{ steps.meta.outputs.tags }}
-        path: /app/.
+        path: /app/output.xml
         
     - name: Upload Dist
       uses: actions/upload-artifact@v3
