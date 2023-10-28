@@ -85,4 +85,4 @@ jobs:
           npm install -g xunit-viewer
           
       - name: Run xunit-viewer
-        run: xunit-viewer reports/res.xml -o reports
+        run: xunit-viewer -r reports/res.xml -o result.html
