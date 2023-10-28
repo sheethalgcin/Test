@@ -84,16 +84,12 @@ jobs:
           npm update    
           npm install -g xunit-viewer
           
-      - name: Generate Report
+      - name: XUnit Viewer
         id: xunit-viewer
-        uses: AutoModality/action-xunit-viewer@v1
-        with:
-          results: ${{ env.RESULTS_PATH }}
-          
-      - name: The generated report
-        run: echo "The report is ${{ steps.xunit-viewer.outputs.report-file }}"    
+        uses: AutoModality/action-xunit-viewer@v1  
       - name: Attach the report
         uses: actions/upload-artifact@v1
         with:
-          name: alternate-results-path-reports
-          path: ${{ env.RESULTS_PATH }}
+          name: ${{ steps.xunit-viewer.outputs.report-name }}
+          path: ${{ steps.xunit-viewer.outputs.report-dir }}
+
