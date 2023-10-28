@@ -59,7 +59,7 @@ jobs:
       id: extract
       with:
         image: ${{ steps.meta.outputs.tags }}
-        path: app/output.xml
+        path: /app/.
         
     - name: Upload Dist
       uses: actions/upload-artifact@v3
@@ -76,12 +76,8 @@ jobs:
     - name: Get the current path
       run: |
            ls  -l reports
-    - name: Get Repository Owner & Name
-      run: |
-        export OWNER="$(echo "${{ github.repository }}" | awk -F / '{print $1}' | sed -e "s/:refs//")"
-        export REPO="$(echo "${{ github.repository }}" | awk -F / '{print $2}' | sed -e "s/:refs//")"
-        echo "::set-env name=REPOSITORY_OWNER::$OWNER"
-        echo "::set-env name=REPOSITORY_NAME::$REPO"
+           ls  -l  *.xml
+   
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v0.1
       env:
