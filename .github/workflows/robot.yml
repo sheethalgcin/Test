@@ -61,4 +61,4 @@ jobs:
       if: always()
       with:
         files: |
-          reports/*.xml
+          reports/res.xml
