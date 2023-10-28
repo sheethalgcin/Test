@@ -38,15 +38,6 @@ jobs:
     - name: Run the docker
       run: |
         docker run ${{ steps.meta.outputs.tags }}
-      
-   # - uses: shrink/actions-docker-extract@v3
-   #   id: extract
-   #   with:
-    #    image: ${{ steps.meta.outputs.tags }}
-    #    path: ./results/output.xml
-   # - name: Debug - List files in the "dist" folder
-   #   run: |
-    #    ls -l ${{ steps.extract.outputs.destination }}
     
     - name: Upload Dist
       uses: actions/upload-artifact@v3
@@ -54,16 +45,17 @@ jobs:
         name: reports
         path: results
 
-
     - name: Download artifact
       uses: actions/download-artifact@v3
       id: download
       with:
         name: reports
         path: .        
-        continue-on-error: true
+
     - name: 'Echo download path'
-      run: echo ${{steps.download.outputs.download-path}}
+      run: |
+        echo ${{steps.download.outputs.download-path}}
+        ls -l ${{steps.download.outputs.download-path}}/reports/
       
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v2.3
