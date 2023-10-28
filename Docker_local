@@ -13,7 +13,7 @@ COPY . /app
 
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
-CMD ["robot","--output", "output.xml", "test.robot"]
+CMD ["robot","-d","output","--output", "output.xml", "test.robot"]
 RUN pwd
 RUN ls -l /app
 RUN find /app -type f -exec chmod +x {} \;
