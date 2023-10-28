@@ -73,11 +73,5 @@ jobs:
       run: |
         cat test-summary.md
 
-    - name: Publish Report
-      uses: turing85/publish-report@v1
-      with:
-        checkout: true
-        download-artifact-name: reports
-        report-path: reports/res.xml
 
   
