@@ -5,4 +5,4 @@ services:
       context: .
       dockerfile: Docker_local
     volumes:
-      - ./results:/app/output/
+     - ./results:/app/output:rw
