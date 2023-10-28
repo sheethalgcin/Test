@@ -52,21 +52,14 @@ jobs:
     
     - name: Run a shell command
       run: |
-          echo "Hello from the self-hosted runner!"
-          #docker run -d - ${{ steps.meta.outputs.tags }}
-          #docker run -v ${PWD}/output.xml:/app/output.xml ${{ steps.meta.outputs.tags }}
-            
           docker run   ${{ steps.meta.outputs.tags }}
       continue-on-error: true
-          #docker container stop sheetal
-          #docker container rm sheetal
-          #docker volume rm myvol2
           
     - uses: shrink/actions-docker-extract@v3
       id: extract
       with:
         image: ${{ steps.meta.outputs.tags }}
-        path: /app/output.xml
+        path: app/output.xml
         
     - name: Upload Dist
       uses: actions/upload-artifact@v3
