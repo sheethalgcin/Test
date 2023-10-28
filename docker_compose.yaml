@@ -5,5 +5,4 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - ./results:/robot-tests/results
-    command: robot /robot-tests/tests
+      - ./results:/app/output.xml
