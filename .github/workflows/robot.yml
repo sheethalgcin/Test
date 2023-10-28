@@ -41,7 +41,6 @@ jobs:
     - name: List files in /app/
       run: |
         docker run ${{ steps.meta.outputs.tags }}
-        ls  -l   results
       
    # - uses: shrink/actions-docker-extract@v3
    #   id: extract
@@ -58,18 +57,17 @@ jobs:
         path: results
     - name: Get the current path
       run: |
-           ls  -l 
-           ls  -l  *.xml       
+           ls  -l results
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
         name: dist
-        path: reports
+        path: results
 
     - name: Get the current path
       run: |
-           ls  -l reports
-           ls  -l  *.xml
+           ls  -l results
+          
    
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v0.1
