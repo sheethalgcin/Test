@@ -59,13 +59,12 @@ jobs:
       run: |
         docker run ${{ steps.meta.outputs.tags }} ls -l /app/
         chmod  a+x   *.* 
-
       
     - uses: shrink/actions-docker-extract@v3
       id: extract
       with:
         image: ${{ steps.meta.outputs.tags }}
-        path: /app/.
+        path: /app
     - name: Debug - List files in the "dist" folder
       run: |
         ls -l ${{ steps.extract.outputs.destination }}
