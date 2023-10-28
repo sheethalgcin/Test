@@ -55,7 +55,8 @@ jobs:
     - name: Run a shell command
       run: |
           echo "Hello from the self-hosted runner!"
-          docker run -d --name sheetal  --mount source=app,target=/myvol2 ${{ steps.meta.outputs.tags }}
+          #docker run -d --name sheetal  --mount source=app,target=/myvol2 ${{ steps.meta.outputs.tags }}
+          docker run -v ${PWD}/output.xml:/app/output.xml ${{ steps.meta.outputs.tags }}
           pwd
           ls -l  /myvol2
           #docker container stop sheetal
