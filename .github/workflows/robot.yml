@@ -58,8 +58,8 @@ jobs:
           mkdir   myvol2
           docker run -d --name sheetal  --mount source=app,target=/myvol2 ${{ steps.meta.outputs.tags }}
           pwd
-          ls -l 
-          docker service ps sheetal
+          ls -l app
+          ls -l myvol2
           docker container stop sheetal
           docker container rm sheetal
           docker volume rm myvol2
