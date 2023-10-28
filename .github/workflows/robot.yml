@@ -67,7 +67,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Generate Test Reports
     env:
-      RESULTS_PATH: .
+     RESULTS_PATH: alternate-location
     steps:
       - name: Step 2
         run: |
@@ -79,6 +79,7 @@ jobs:
         uses: AutoModality/action-xunit-viewer@v1
         with:
           results: ${{ env.RESULTS_PATH }}
+          
       - name: The generated report
         run: echo "The report is ${{ steps.xunit-viewer.outputs.report-file }}"    
       - name: Attach the report
