@@ -62,11 +62,15 @@ jobs:
       with:
         files: |
           reports/res.xml
-          
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: JEST Tests            # Name of the check run which will be created
-        path: reports/res.xml    # Path to test results
-        reporter: jest-junit  
+  test:
+    runs-on: ubuntu-18.04
+    name: Generate Test Reports
+    steps:
+      - name: XUnit Viewer
+        id: xunit-viewer
+        uses: AutoModality/action-xunit-viewer@v1  
+      - name: Attach the report
+        uses: actions/upload-artifact@v1
+        with:
+          name: ${{ steps.xunit-viewer.outputs.report-name }}
+          path: ${{ steps.xunit-viewer.outputs.report-dir }}
