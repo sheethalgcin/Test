@@ -40,10 +40,7 @@ jobs:
         tags: |
           type=ref,event=branch
           
-    - name: Get the current path
-      run: |
-           ls  -l
-           pwd
+
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
@@ -81,8 +78,16 @@ jobs:
           ${{ steps.extract.outputs.destination }}
           pwd
            
-    - name: Download reports
-      uses: actions/download-artifact@v1
+    - name: Download artifact
+      id: download-artifact
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        path: reports
+        
+    - name: Get the current path
+      run: |
+           ls  -l
+           pwd
     - name: Get Repository Owner & Name
       run: |
         export OWNER="$(echo "${{ github.repository }}" | awk -F / '{print $1}' | sed -e "s/:refs//")"
