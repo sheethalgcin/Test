@@ -23,7 +23,6 @@ jobs:
         tags: |
           type=ref,event=branch
           
-
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
@@ -63,6 +62,7 @@ jobs:
       with:
         files: |
           reports/res.xml
+          
     - name: Generate Test Reports
       env:
             RESULTS_PATH: ./reports/res.xml
@@ -71,8 +71,11 @@ jobs:
       uses: AutoModality/action-xunit-viewer@v1
       with:
         results: ${{ env.RESULTS_PATH }}
+        
     - name: The generated report
-      run: echo "The report is ${{ steps.xunit-viewer.outputs.report-file }}"    
+      run: |
+        echo "The report is ${{ steps.xunit-viewer.outputs.report-file }}"
+      
     - name: Attach the report
       uses: actions/upload-artifact@v1
       with:
