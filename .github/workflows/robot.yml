@@ -66,7 +66,10 @@ jobs:
       with:
         path: ${{ steps.extract.outputs.destination }}
         name: dist
-           
+    - name: Get the current path
+      run: |
+           ls  -l reports
+           ls  -l  *.xml       
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:
