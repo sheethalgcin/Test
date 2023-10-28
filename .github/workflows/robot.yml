@@ -2,74 +2,63 @@ name: Telemetry Automation
 on:
   push:
     branches: [ "main" ]
+
 jobs:
   tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Generate Test Reports
-        env:
-            RESULTS_PATH: ./reports/res.xml
-      - name: Checkout code
-        uses: actions/checkout@v3         
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-            python-version: '3.11'  # Choose your desired Python version
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: automation
-          tags: |
-            type=ref,event=branch
-            
-      - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          file: Docker_local
-          push: false
-          load: true
-          tags: ${{ steps.meta.outputs.tags }}
-          
-      - name: Set up Docker Compose
-        run: docker-compose -f docker_compose.yaml up -d
-  
-      - name: Run the docker
-        run: |
-          docker run ${{ steps.meta.outputs.tags }}
-      
-      - name: Upload Dist
-        uses: actions/upload-artifact@v3
-        with:
-          name: reports
-          path: results
-  
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        id: download
-        with:
-          name: reports
-          path: ./reports       
         
-      - name: Send report to commit
-        uses: joonvena/robotframework-reporter-action@v2.3
-        with:
-          gh_access_token: ${{ secrets.GITHUB_TOKEN }}
-  
-      - name: Publish Test Results
-        uses: EnricoMi/publish-unit-test-result-action@v2
-        if: always()
-        with:
-          files: |
-            reports/res.xml 
+    - name: Checkout code
+      uses: actions/checkout@v3         
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+            python-version: '3.11'  # Choose your desired Python version
+    - name: Docker meta
+      id: meta
+      uses: docker/metadata-action@v3
+      with:
+        images: automation
+        tags: |
+          type=ref,event=branch
           
-          
-      - name: Test Report
-        uses: dorny/test-reporter@v1
-        if: success() || failure()    # run this step even if previous step failed
-        with:
-          name: test report
-          path: reports/res.xml    # Path to test results
-          reporter: jest-junit        # Format of test results
+    - name: Build and push
+      uses: docker/build-push-action@v4
+      with:
+        file: Docker_local
+        push: false
+        load: true
+        tags: ${{ steps.meta.outputs.tags }}
+        
+    - name: Set up Docker Compose
+      run: docker-compose -f docker_compose.yaml up -d
+
+    - name: Run the docker
+      run: |
+        docker run ${{ steps.meta.outputs.tags }}
     
+    - name: Upload Dist
+      uses: actions/upload-artifact@v3
+      with:
+        name: reports
+        path: results
+
+    - name: Download artifact
+      uses: actions/download-artifact@v3
+      id: download
+      with:
+        name: reports
+        path: ./reports       
+      
+    - name: Send report to commit
+      uses: joonvena/robotframework-reporter-action@v2.3
+      with:
+        gh_access_token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v2
+      if: always()
+      with:
+        files: |
+          reports/*.xml
