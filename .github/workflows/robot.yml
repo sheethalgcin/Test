@@ -2,8 +2,6 @@ name: Telemetry Automation
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 
 jobs:
@@ -37,7 +35,8 @@ jobs:
     - name: Run a shell command
       run: |
           echo "Hello from the self-hosted runner!"
-          docker run -d \  --name sheetal \ --mount source=myvol2,target=/app \robot-test
+           mkdir   myvol2
+          docker run -d --name sheetal  --mount source=myvol2,target=/app robot-test
           docker service ps sheetal
           docker service rm sheetal
     - name: Download reports
