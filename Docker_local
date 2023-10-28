@@ -14,5 +14,6 @@ COPY . /app
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
 CMD ["robot","--output", "output.xml", "test.robot"]
+chmod  +x  ./app
 RUN pwd
 RUN ls -l
