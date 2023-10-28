@@ -50,7 +50,7 @@ jobs:
       id: download
       with:
         name: reports
-        path: .        
+        path: ./reports       
 
     - name: 'Echo download path'
       run: |
