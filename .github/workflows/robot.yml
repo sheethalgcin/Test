@@ -60,7 +60,10 @@ jobs:
       with:
         image: ${{ steps.meta.outputs.tags }}
         path: /app/.
-        
+    - name: Debug - List files in the "dist" folder
+      run: |
+        ls -l ${{ steps.extract.outputs.destination }}
+    
     - name: Upload Dist
       uses: actions/upload-artifact@v3
       with:
