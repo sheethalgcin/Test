@@ -2,7 +2,6 @@
 Library    DateTime
 
 *** Keywords ***
-
     Set date
 
 #Adding Set Date to run the telemetry validation with github actions.
@@ -20,3 +19,9 @@ Set date
         log to console   ${from}
         log to console   ${to}
     END
+
+*** Test Cases ***
+Test the robot suite
+    [Tags]  Telemetry
+    [Documentation]  Runs Setdat 
+    Set date
