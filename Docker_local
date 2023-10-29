@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy your test suite files into the container
 COPY . /app
+RUN chmod +x /entry.sh
 
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
