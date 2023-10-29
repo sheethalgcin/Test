@@ -37,7 +37,7 @@ jobs:
     - name: Run the docker
       run: |
         docker run -e CONDITION1=true  ${{ steps.meta.outputs.tags }}
-        continue-on-error: true
+      continue-on-error: true
     
     - name: Upload Dist
       uses: actions/upload-artifact@v3
