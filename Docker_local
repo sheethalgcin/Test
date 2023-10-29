@@ -14,5 +14,5 @@ COPY . /app
 
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
-CMD ["entry.sh"]
+CMD ["/entry.sh"]
 #CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","test.robot"]
