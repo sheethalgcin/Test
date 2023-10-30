@@ -23,6 +23,16 @@ jobs:
         tags: |
           type=ref,event=branch
           
+    - name: Set up Docker Compose
+      run: |
+        curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o $HOME/docker-compose
+        chmod +x $HOME/docker-compose
+        export PATH=$PATH:$HOME
+      # Install Docker Compose in the user's home directory
+
+    - name: Check Docker Compose Version
+      run: docker-compose --version  
+      
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
