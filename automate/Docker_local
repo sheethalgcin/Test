@@ -13,11 +13,11 @@ COPY .  /app
 WORKDIR /app/automate/
 
 # Copy entry.sh into the container
-RUN chmod +x  /app/automate/entry.sh
+RUN chmod +x  entry.sh
 
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
-CMD ["/app/automate/entry.sh"]
+CMD ["entry.sh"]
 RUN pwd
 #CMD ["robot", "--outputdir","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/"]
 RUN ls -l 
