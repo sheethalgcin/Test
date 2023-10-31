@@ -37,7 +37,7 @@ jobs:
         
 
     - name: Set up Docker Compose
-      run: chown -R runner:runner ./results
+      run: chown -R runner:runner ./automate/results
 
 
     - name: Run the docker
