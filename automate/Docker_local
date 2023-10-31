@@ -4,7 +4,7 @@ FROM python:3.11
 # Set the working directory in the container
 
 COPY requirements.txt ./
-
+COPY entry.sh  ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 
@@ -13,11 +13,11 @@ COPY .  /app
 WORKDIR /app/automate/
 
 # Copy entry.sh into the container
-RUN chmod +x  ./entry.sh
+RUN chmod +x  entry.sh
 
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
-CMD ["./entry.sh"]
+CMD ["entry.sh"]
 RUN pwd
 #CMD ["robot", "--outputdir","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/"]
 RUN ls -l 
