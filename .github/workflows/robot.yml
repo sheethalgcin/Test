@@ -46,13 +46,13 @@ jobs:
       run: ls -l  ./automate
 
     - name: Set up Docker Compose
-      run: ls -l  
+      run: ls -l  results
     
     - name: Upload Dist
       uses: actions/upload-artifact@v3
       with:
         name: reports
-        path: ./automate/results
+        path: ./results
 
     - name: Download artifact
       uses: actions/download-artifact@v3
