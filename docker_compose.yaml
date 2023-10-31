@@ -2,7 +2,8 @@ version: '2'
 services:
   robot:
      build:
-      context: .
-      dockerfile: ./Docker_local 
-      volumes:
-       - ./results:/app/output:rw
+        context: .
+        dockerfile: ./Docker_local 
+      image: robot-results
+        volumes:
+           - ./results:/app/output:rw
