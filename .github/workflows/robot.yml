@@ -41,7 +41,6 @@ jobs:
     - name: Run the docker
       run: |
         docker run -e CONDITION1=true  ${{ steps.meta.outputs.tags }}
-        docker-compose exec robot /bin/bash
       continue-on-error: true
 
     - name: Set up Docker Compose
@@ -49,20 +48,20 @@ jobs:
 
     - name: Set up Docker Compose
       run: :|
-        ls  -l  ./results 
+        ls  -l  /automate/results 
 
     - name: Upload Dist
       uses: actions/upload-artifact@v3
       with:
         name: reports
-        path: ./results
+        path: /automate/results 
 
     - name: Download artifact
       uses: actions/download-artifact@v3
       id: download
       with:
         name: reports
-        path: ./reports       
+        path: /automate/results      
       
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v2.3
