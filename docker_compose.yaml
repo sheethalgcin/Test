@@ -1,8 +1,6 @@
 version: '3'
 services:
-  robot:
-    build:
-      context: .
-      dockerfile: Docker_local
+ robot:
+    image: robot-image
     volumes:
      - ./results:/app/output:rw
