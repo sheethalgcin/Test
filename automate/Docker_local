@@ -22,3 +22,4 @@ CMD ["python", "--version"]
 CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/"]
 
 RUN ls -l 
+RUn pwd
