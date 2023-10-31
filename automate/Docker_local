@@ -21,4 +21,6 @@ CMD ["python", "--version"]
 #CMD ["./entry.sh"]
 CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/*"]
 
-RUN ls -l /app/automate/output
+RUN ls -l 
+WORKDIR /app/automate/output
+RUN ls -l
