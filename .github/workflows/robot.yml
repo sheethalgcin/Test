@@ -33,7 +33,6 @@ jobs:
         
     - name: Set up Docker Compose
       run: |
-        cd  ./automate
         docker compose -f ./docker_compose.yaml up -d
 
     - name: Set up Docker Compose
@@ -49,7 +48,7 @@ jobs:
 
     - name: Set up Docker Compose
       run: :|
-        ls  -l  ./automate/results 
+        ls  -l  ./results 
 
     - name: Upload Dist
       uses: actions/upload-artifact@v3
