@@ -7,5 +7,3 @@ services:
     image: robot-results
     volumes:
       - ./results:/app/automate/output/:rw
-    command: chmod -R 777 ./results
-    command: chmod -R runner:docker ./results
