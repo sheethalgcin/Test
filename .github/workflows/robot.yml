@@ -32,10 +32,10 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         
     - name: Set up Docker Compose
-      run: docker compose -f docker_compose.yaml up -d
+      run: docker compose  --user runner -f docker_compose.yaml up -d
 
     - name: Set up Docker Compose
-      run: su -c "setenforce 0"
+      run: ls -l ./automate
 
     - name: Run the docker
       run: |
