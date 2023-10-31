@@ -3,5 +3,6 @@ services:
   robot:
      build:
       context: .
-      dockerfile: Docker_local 
-     - ./results:/app/output:rw
+      dockerfile: ./Docker_local 
+      volumes:
+       - ./results:/app/output:rw
