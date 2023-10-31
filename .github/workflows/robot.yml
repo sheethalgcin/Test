@@ -35,7 +35,7 @@ jobs:
       run: docker compose -f docker_compose.yaml up -d
 
     - name: Set up Docker Compose
-      run: ls -l
+      run: su -c "setenforce 0"
 
     - name: Run the docker
       run: |
