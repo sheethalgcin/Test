@@ -26,13 +26,13 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v4
       with:
-        file: Docker_local
+        file: ./automate/Docker_local
         push: false
         load: true
         tags: ${{ steps.meta.outputs.tags }}
         
     - name: Set up Docker Compose
-      run: docker compose -f docker_compose.yaml up -d
+      run: docker compose -f ./automate/docker_compose.yaml up -d
 
     - name: Set up Docker Compose
       run: ls -l
