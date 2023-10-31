@@ -48,20 +48,20 @@ jobs:
 
     - name: Set up Docker Compose
       run: :|
-        ls  -l  /automate/results 
+        ls  -l  ./automate/results 
 
     - name: Upload Dist
       uses: actions/upload-artifact@v3
       with:
         name: reports
-        path: /automate/results 
+        path: ./automate/results 
 
     - name: Download artifact
       uses: actions/download-artifact@v3
       id: download
       with:
         name: reports
-        path: /automate/results      
+        path: ./automate/results      
       
     - name: Send report to commit
       uses: joonvena/robotframework-reporter-action@v2.3
