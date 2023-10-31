@@ -32,7 +32,9 @@ jobs:
         tags: ${{ steps.meta.outputs.tags }}
         
     - name: Set up Docker Compose
-      run: docker compose -f ./automate/docker_compose.yaml up -d
+      run: |
+        cd  ./automate
+        docker compose -f ./docker_compose.yaml up -d
 
     - name: Set up Docker Compose
       run: ls -l  ./automate
