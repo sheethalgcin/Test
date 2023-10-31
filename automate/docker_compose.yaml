@@ -7,3 +7,4 @@ services:
     image: robot-results
     volumes:
       - ./results:/app/automate/output:rw
+    command: chmod -R 755 ./results
