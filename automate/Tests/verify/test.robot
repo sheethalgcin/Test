@@ -5,8 +5,8 @@ Library    DateTime
 #Adding Set Date to run the telemetry validation with github actions.
 #This function uses from and to values the command line arguments if its given else it will validate for 24 hours.
 Set date
-    log to console     ${VAR1}
-    log to console     ${VAR2}        
+    #log to console     ${VAR1}
+    #log to console     ${VAR2}        
     ${Start}    get variable value    ${from}
     ${end}      get variable value    ${to}
     IF  '${Start}' == '${None}' or '${end}' == '${None}'
