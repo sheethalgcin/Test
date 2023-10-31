@@ -20,7 +20,7 @@ WORKDIR /app/automate/
 CMD ["python", "--version"]
 #CMD ["./entry.sh"]
 RUN pwd
-CMD ["robot", "--outputdir","output","--output", "output.xml", "--xunit", "res.xml","/automate/Tests/verify/"]
-
+CMD ["robot", "--outputdir","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/"]
+RUN chmod 777 /app/automate/
 RUN ls -l 
 RUN pwd
