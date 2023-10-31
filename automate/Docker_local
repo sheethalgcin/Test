@@ -14,7 +14,7 @@ WORKDIR /app/automate/
 
 # Copy entry.sh into the container
 COPY entry.sh ./
-RUN chmod +x ./entry.sh
+#RUN chmod +x ./entry.sh
 
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
