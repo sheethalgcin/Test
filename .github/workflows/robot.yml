@@ -1,7 +1,7 @@
 name: Telemetry Automation
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "tryactions" ]
 
 jobs:
   tests:
