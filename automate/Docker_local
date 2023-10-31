@@ -20,4 +20,5 @@ WORKDIR /app/automate/
 CMD ["python", "--version"]
 #CMD ["./entry.sh"]
 CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify"]
-RUN find /app/automate/output -type f -exec chmod 777 {} ;
+#RUN find /app/automate/output -type f -exec chmod 777 {} ;
+RUN chmod  777 ./app/automate/output/output.xml
