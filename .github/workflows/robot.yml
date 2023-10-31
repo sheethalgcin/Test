@@ -42,7 +42,7 @@ jobs:
 
     - name: Run the docker
       run: |
-        docker run  --user root -e CONDITION1=true  ${{ steps.meta.outputs.tags }}
+        docker run   ${{ steps.meta.outputs.tags }}
       continue-on-error: true
 
     - name: Set up Docker Compose
