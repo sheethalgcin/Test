@@ -13,5 +13,5 @@ else
 fi
 
 # Run the Robot Framework tests with the chosen environment variables
-robot --variable VAR1:$VAR1 --variable VAR2:$VAR2 -d  output --output  output.xml  --xunit  res.xml  test.robot
+robot --variable VAR1:$VAR1 --variable VAR2:$VAR2 -d  output --output  output.xml  --xunit  res.xml  Tests/verify/*
 #robot  test.robot  # Replace with the actual path to your Robot Framework tests
