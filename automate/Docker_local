@@ -19,8 +19,8 @@ WORKDIR /app/automate/
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
 #CMD ["./entry.sh"]
-CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/*"]
+CMD ["robot","-d","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/"]
 
 RUN ls -l 
-WORKDIR /app/automate/output
-RUN ls -l
+
+RUN ls -l WORKDIR
