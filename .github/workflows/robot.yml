@@ -35,9 +35,7 @@ jobs:
       run: docker compose -f docker_compose.yaml up -d
 
     - name: Set up Docker Compose
-      run: |
-        chown -R root:root ./results
-        ls -l
+      run: ls -l
 
     - name: Run the docker
       run: |
