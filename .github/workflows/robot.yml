@@ -35,7 +35,7 @@ jobs:
       run: docker compose -f ./automate/docker_compose.yaml up -d
 
     - name: Set up Docker Compose
-      run: ls -l
+      run: ls -l  ./automate
 
     - name: Run the docker
       run: |
@@ -46,7 +46,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: reports
-        path: results
+        path: ./automate/results
 
     - name: Download artifact
       uses: actions/download-artifact@v3
