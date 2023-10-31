@@ -6,4 +6,4 @@ services:
       dockerfile: ./Docker_local
     image: robot-results
     volumes:
-      - ./results:/app/output:rw
+      - ./results:/app/automate/output:rw
