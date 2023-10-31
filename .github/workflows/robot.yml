@@ -47,11 +47,8 @@ jobs:
 
     - name: Set up Docker Compose
       run: :|
-        cd ./automate/results
-    - name: Set up Docker Compose
-      run: :|
-          ls -l 
-    
+        ls  -l  ./automate/results 
+
     - name: Upload Dist
       uses: actions/upload-artifact@v3
       with:
