@@ -34,9 +34,11 @@ jobs:
     - name: Set up Docker Compose
       run: |
         docker compose -f ./automate/docker_compose.yaml up -d
+        
 
     - name: Set up Docker Compose
-      run: ls -l  ./automate
+      run: chown -R runner:runner ./results
+
 
     - name: Run the docker
       run: |
