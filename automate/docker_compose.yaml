@@ -7,3 +7,4 @@ services:
     image: robot-results
     volumes:
       - ./results:/app/automate/output/:rw
+    command:  chcon -Rt svirt_sandbox_file_t ./results
