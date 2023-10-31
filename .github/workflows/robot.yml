@@ -41,6 +41,12 @@ jobs:
       run: |
         docker run -e CONDITION1=true  ${{ steps.meta.outputs.tags }}
       continue-on-error: true
+
+    - name: Set up Docker Compose
+      run: ls -l  ./automate
+
+    - name: Set up Docker Compose
+      run: ls -l  
     
     - name: Upload Dist
       uses: actions/upload-artifact@v3
