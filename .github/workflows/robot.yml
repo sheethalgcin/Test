@@ -41,6 +41,7 @@ jobs:
     - name: Run the docker
       run: |
         docker run -e CONDITION1=true  ${{ steps.meta.outputs.tags }}
+        docker-compose exec robot /bin/bash
       continue-on-error: true
 
     - name: Set up Docker Compose
