@@ -35,14 +35,12 @@ jobs:
       run: |
         docker compose -f ./automate/docker_compose.yaml up -d
         
-
     - name: Set up Docker Compose
       run: sudo chown -R runner:docker ./automate/results
 
-
     - name: Run the docker
       run:
-        docker run -e CONDITION1=true  ${{ steps.meta.outputs.tags }}
+        docker run -e CONDITION1=true  robot-results
       continue-on-error: true
 
     - name: Set up Docker Compose
