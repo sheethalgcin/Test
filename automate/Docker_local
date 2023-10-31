@@ -17,8 +17,8 @@ RUN chmod +x  entry.sh
 
 # Define the entry point to run Robot Framework
 CMD ["python", "--version"]
-CMD ["entry.sh"]
+#CMD ["entry.sh"]
 RUN pwd
-#CMD ["robot", "--outputdir","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/"]
+CMD ["robot", "--outputdir","output","--output", "output.xml", "--xunit", "res.xml","Tests/verify/"]
 RUN ls -l 
 RUN pwd
