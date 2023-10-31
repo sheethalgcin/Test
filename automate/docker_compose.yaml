@@ -6,5 +6,5 @@ services:
       dockerfile: ./Docker_local
     image: robot-results
     volumes:
-      - ./results:/app/automate/output:rw
+      - ../results:/app/automate/output:rw
     command: chmod -R 755 ./results
