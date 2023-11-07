@@ -1,8 +1,10 @@
 name: Telemetry Automation
 on:
-  push:
-    branches: [ "main" ]
-
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        description: Select the environment
 jobs:
   tests:
     runs-on: ubuntu-latest
