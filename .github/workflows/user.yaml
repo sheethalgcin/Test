@@ -1,0 +1,17 @@
+name: user space
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - name: Check out my other private repo
+      uses: actions/checkout@main
+      with:
+          repository: sheetalgcin/pythonTest
+          
