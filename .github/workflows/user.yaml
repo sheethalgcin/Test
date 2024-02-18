@@ -21,7 +21,5 @@ jobs:
         python-version: '3.11'  # Choose your desired Python version
         
     - name: get the path
-      run:
-        ls    
-        python parseyaml.py
+      run: python parseyaml.py
           
