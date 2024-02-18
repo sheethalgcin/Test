@@ -13,7 +13,10 @@ jobs:
       uses: actions/checkout@main
       with:
           repository: sheetalgcin/pythonTest
-          
+    
+    - name: get the path
+      run: 
+        ls      
     
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -23,6 +26,5 @@ jobs:
     - name: get the path
       run: 
         ls
-        chmod a+x parseyaml.py
         python parseyaml.py
           
