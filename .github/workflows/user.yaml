@@ -17,4 +17,5 @@ jobs:
     - name: get the path
       run:
         ls
+        python3 parseyaml.py
           
