@@ -12,14 +12,14 @@ def parse_yaml_file(filename, target_name):
 
 
 
-filename = 'user.yml'
-target_name = ''
+filename = 'testApp.yml'
+target_name = 'web'
 result = parse_yaml_file(filename, target_name)
 
 if result:
     print(f"Found {target_name}:")
-    print(f"Age: {result['age']}")
-    print(f"City: {result['city']}")
+    print(f"Age: {result['id']}")
+    print(f"City: {result['app_permissions']}")
 else:
     print(f"Could not find data for {target_name}.")
 
