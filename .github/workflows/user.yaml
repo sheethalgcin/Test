@@ -14,8 +14,14 @@ jobs:
       with:
           repository: sheetalgcin/pythonTest
           
+    
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'  # Choose your desired Python version
+        
     - name: get the path
       run:
-        ls
+        ls    
         python parseyaml.py
           
