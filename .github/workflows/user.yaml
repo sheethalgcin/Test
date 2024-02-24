@@ -26,4 +26,5 @@ jobs:
     - name: get the path
       run: 
         ls
-          
+        python3 ./github/workflows/parseyaml.py
+  
