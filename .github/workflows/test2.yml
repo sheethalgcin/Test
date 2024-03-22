@@ -1,35 +1,36 @@
-name: Python and Robot Framework CI
 
+name: Test
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
+
 
 jobs:
-  build:
-    runs-on: macos-latest
-
+ build-and-install:
+    runs-on: [self-hosted,ubuntu:latest]
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+        - name: Check out repository code
+          uses: actions/checkout@v3
+    
+        - uses: docker/setup-buildx-action@v2   
+        - name: Build and push
+          id: meta
+          uses: docker/build-push-action@v4
+          with:
+            context: .
+            file: Dockerfile
+            push: false
+            load: true
+            tags: ${{ steps.meta.outputs.tags }}
 
-    - name: Install Python and dependencies
-      run: |
-        # Install Python
-        brew install python3  # Install Python 3.x using Homebrew
-        python3 --version  # Verify Python version
-
-        # Install pip
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        python3 get-pip.py
-
-        # Install dependencies
-        pip install -r requirements.txt
-
-    - name: Verify installation
-      run: |
-        python3 --version
-        robot --version
+        - name: Run Docker containers to parse the python script
+          run: | 
+            ls -l          
+            docker run --rm  ${{ steps.meta.outputs.tags }}
+          
+      #Remove the image from the local registry
+        - name: Remove docker container and image 
+          if: always()
+          run: |
+            docker image rm ${{ steps.meta.outputs.tags }}
