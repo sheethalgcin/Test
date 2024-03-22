@@ -5,28 +5,32 @@ on:
     branches:
       - main
 
+
 jobs:
  build-and-install:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu:latest
     steps:
-        - uses: docker/setup-buildx-action@v2   
-        - name: Build and push
-          id: meta
-          uses: docker/build-push-action@v4
-          with:
-            context: ./
-            file: Dockerfile
-            push: false
-            load: true
-            tags: ${{ steps.meta.outputs.tags }}
+     - name: List directory contents
+       run: ls -l
 
-        - name: Run Docker containers to parse the python script
-          run: | 
+     - name: Build and push
+       id: meta
+       uses: docker/build-push-action@v4
+       with:
+          context: ./
+          file: Dockerfile
+          push: false
+          load: true
+          tags: ${{ steps.meta.outputs.tags }}
+      
+     - name: Run Docker containers to parse the python script
+       run: | 
             ls -l          
             docker run --rm  ${{ steps.meta.outputs.tags }}
           
       #Remove the image from the local registry
-        - name: Remove docker container and image 
-          if: always()
+     - name: Remove docker container and image 
+       if: always()
           run: |
             docker image rm ${{ steps.meta.outputs.tags }}
+
