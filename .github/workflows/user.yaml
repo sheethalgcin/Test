@@ -8,7 +8,7 @@ on:
 
 jobs:
  build-and-install:
-    runs-on: [self-hosted]
+    runs-on: [self-hosted,ubuntu:latest]
     steps:
         - name: Check out repository code
           uses: actions/checkout@v3
