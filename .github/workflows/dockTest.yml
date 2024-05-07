@@ -1,36 +1,16 @@
-
-name: Test
 on:
-  push:
-    branches:
-      - main
-
+  release:
+    types: [published]
 
 jobs:
- build-and-install:
-    runs-on: ubuntu:latest
+  fetch-release-details:
+    runs-on: ubuntu-latest
+    
     steps:
-     - name: List directory contents
-       run: ls -l
-
-     - name: Build and push
-       id: meta
-       uses: docker/build-push-action@v4
-       with:
-          context: ./
-          file: Dockerfile
-          push: false
-          load: true
-          tags: ${{ steps.meta.outputs.tags }}
+    - name: Checkout repository
+      uses: actions/checkout@v2
       
-     - name: Run Docker containers to parse the python script
-       run: | 
-            ls -l          
-            docker run --rm  ${{ steps.meta.outputs.tags }}
-          
-      #Remove the image from the local registry
-     - name: Remove docker container and image 
-       if: always()
-          run: |
-            docker image rm ${{ steps.meta.outputs.tags }}
-
+    - name: Print release details
+      run: |
+        echo "Release tag: ${{ github.event.release.tag_name }}"
+        echo "Release name: ${{ github.event.release.published_at }}"
