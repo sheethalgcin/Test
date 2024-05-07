@@ -1,0 +1,16 @@
+on:
+  release:
+    types: [published]
+
+jobs:
+  fetch-release-details:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Print release details
+      run: |
+        echo "Release tag: ${{ github.event.release.tag_name }}"
+        echo "Release name: ${{ github.event.release.published_at }}"
